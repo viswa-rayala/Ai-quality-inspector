@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+
+# YOLO Output
+runs/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
