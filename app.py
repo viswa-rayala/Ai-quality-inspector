@@ -3,46 +3,33 @@ import pandas as pd
 
 # ---------------- Page Config ---------------- #
 st.set_page_config(
-    page_title="VisionGuard AI",
+    page_title="Smart Detection",
     page_icon="🛡️",
     layout="wide"
 )
 
 # ---------------- Header ---------------- #
-st.title("🛡️ VisionGuard AI")
+st.title("🛡️ Smart Detection")
 st.caption("Smart AI-Powered Product Quality Inspection System")
 
 st.divider()
 
-st.markdown(
-    """
+st.markdown("""
 ### 🤖 AI Product Inspection Dashboard
 
 This prototype uses an AI model to inspect products and classify them as **PASS** or **FAIL**.
-"""
-)
+""")
 
-# ---------------- Images ---------------- #
+# ---------------- AI Prediction Image ---------------- #
 
-left, right = st.columns(2)
+st.subheader("🤖 AI Prediction Result")
 
-with left:
-    with st.container(border=True):
-        st.subheader("📷 Input Product")
-        st.image(
-            "prediction.jpg",
-            caption="Input Image",
-            use_container_width=True
-        )
-
-with right:
-    with st.container(border=True):
-        st.subheader("🤖 AI Prediction")
-        st.image(
-            "prediction.jpg",
-            caption="Prediction Result",
-            use_container_width=True
-        )
+with st.container(border=True):
+    st.image(
+        "prediction.jpg",
+        caption="AI Prediction Result",
+        use_container_width=True
+    )
 
 # ---------------- Metrics ---------------- #
 
@@ -52,6 +39,7 @@ st.subheader("📊 Inspection Summary")
 
 c1, c2, c3, c4 = st.columns(4)
 
+# Change these values depending on the prediction
 c1.metric("📦 Total Inspected", "1")
 c2.metric("✅ Passed", "0")
 c3.metric("❌ Failed", "1")
@@ -63,13 +51,13 @@ st.divider()
 
 st.subheader("🔍 Inspection Result")
 
-col1, col2 = st.columns([2,1])
+col1, col2 = st.columns([2,1 ])
 
 with col1:
 
-    st.error("❌ PRODUCT FAILED INSPECTION")
+    st.success("✅ PRODUCT PASSED INSPECTION")
 
-    st.write("### Prediction : Defective")
+    st.write("### Prediction : Defect")
 
     st.write("### Confidence : **100%**")
 
@@ -77,8 +65,7 @@ with col1:
 
 with col2:
 
-    st.info(
-        """
+    st.info("""
 **Product Details**
 
 🧴 Product : Bottle
@@ -86,20 +73,19 @@ with col2:
 🆔 Product ID : BTL-001
 
 ⏱ Inspection Time : 0.45 sec
-"""
-    )
+""")
 
-# ---------------- History ---------------- #
+# ---------------- Inspection History ---------------- #
 
 st.divider()
 
 st.subheader("📑 Inspection History")
 
 history = pd.DataFrame({
-    "Product":["Bottle"],
-    "Prediction":["Defective"],
-    "Result":["FAIL"],
-    "Confidence":["100%"]
+    "Product": ["Bottle"],
+    "Prediction": ["Defective"],
+    "Result": ["Fail"],
+    "Confidence": ["100%"]
 })
 
 st.dataframe(history, use_container_width=True)
@@ -110,34 +96,29 @@ st.divider()
 
 st.subheader("🤖 AI Model Information")
 
-col1, col2, col3 = st.columns(3)
+m1, m2, m3 = st.columns(3)
 
-col1.success("YOLOv8 Classification")
-
-col2.info("Ultralytics Framework")
-
-col3.warning("Inference Time : 0.45 sec")
+m1.success("YOLOv8 Classification")
+m2.info("Ultralytics Framework")
+m3.warning("Inference Time : 0.45 sec")
 
 # ---------------- Sidebar ---------------- #
 
-st.sidebar.title("🛡️ VisionGuard AI")
+st.sidebar.title("🛡️ Smart Detection")
 
-st.sidebar.success("System Status : Online")
+st.sidebar.success("🟢 System Status : Online")
 
 st.sidebar.markdown("---")
 
-st.sidebar.write("### Demo Information")
+st.sidebar.subheader("Demo Information")
 
 st.sidebar.write("✔ AI Product Inspection")
-
 st.sidebar.write("✔ Hackathon Prototype")
-
 st.sidebar.write("✔ Streamlit Dashboard")
-
 st.sidebar.write("✔ YOLOv8 Classification")
 
 # ---------------- Footer ---------------- #
 
 st.divider()
 
-st.caption("© 2026 VisionGuard AI | AI-Powered Product Quality Inspection for MSMEs")
+st.caption("© 2026 Smart Detection | AI-Powered Product Quality Inspection for MSMEs")
